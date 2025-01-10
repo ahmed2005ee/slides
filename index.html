@@ -98,6 +98,27 @@
         .product-card {
             animation: fadeIn 1s ease-in-out;
         }
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .specialty-card {
+            flex: 1 1 calc(33.333% - 20px);
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -141,19 +162,48 @@
         </div>
 
         <h2>أقسام الطب</h2>
-        <p>تشمل أقسام الطب ما يلي:</p>
-        <ul>
-            <li>الصيدلة</li>
-            <li>المختبرات الطبية</li>
-            <li>الجراحة</li>
-            <li>الطب الباطني</li>
-            <li>طب الأطفال</li>
-            <li>طب النساء والتوليد</li>
-            <li>الطب النفسي</li>
-            <li>طب الأسنان</li>
-            <li>الطب الرياضي</li>
-            <li>طب الطوارئ</li>
-        </ul>
+        <div class="specialties">
+            <div class="specialty-card">
+                <h3>الصيدلة</h3>
+                <p>قسم يهتم بتحضير وصرف الأدوية.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>المختبرات الطبية</h3>
+                <p>قسم يهتم بالتحاليل الطبية والفحوصات المخبرية.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>الجراحة</h3>
+                <p>قسم يهتم بإجراء العمليات الجراحية.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>الطب الباطني</h3>
+                <p>قسم يعنى بتشخيص وعلاج الأمراض الباطنية.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>طب الأطفال</h3>
+                <p>قسم يهتم بصحة وعلاج الأطفال.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>طب النساء والتوليد</h3>
+                <p>قسم يهتم بصحة النساء والحمل والولادة.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>الطب النفسي</h3>
+                <p>قسم يهتم بالصحة النفسية والعقلية.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>طب الأسنان</h3>
+                <p>قسم يعنى بصحة الفم والأسنان.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>الطب الرياضي</h3>
+                <p>قسم يهتم بصحة وعلاج الرياضيين.</p>
+            </div>
+            <div class="specialty-card">
+                <h3>طب الطوارئ</h3>
+                <p>قسم يهتم بالحالات الطارئة والعاجلة.</p>
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 النصائح الطبية اليومية | جميع الحقوق محفوظة</p>
