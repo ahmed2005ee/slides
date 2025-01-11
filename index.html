@@ -13,19 +13,21 @@
         }
         @keyframes bgColorChange {
             0% {background-color: red;}
-            33% {background-color: green;}
-            66% {background-color: blue;}
-            100% {background-color: red;}
+            20% {background-color: orange;}
+            40% {background-color: yellow;}
+            60% {background-color: green;}
+            80% {background-color: blue;}
+            100% {background-color: purple;}
         }
         .specialty-card {
-            background: linear-gradient(45deg, red, green, blue);
-            background-size: 300% 300%;
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, purple);
+            background-size: 600% 600%;
             animation: bgColorChange 5s infinite;
         }
         @media (max-width: 600px) {
             .specialty-card {
-                background: linear-gradient(45deg, rgba(255,0,0,0.8), rgba(0,255,0,0.8), rgba(0,0,255,0.8));
-                background-size: 300% 300%;
+                background: linear-gradient(45deg, rgba(255,0,0,0.8), rgba(255,165,0,0.8), rgba(255,255,0,0.8), rgba(0,255,0,0.8), rgba(0,0,255,0.8), rgba(128,0,128,0.8));
+                background-size: 600% 600%;
                 animation: bgColorChange 5s infinite;
             }
         }
@@ -185,15 +187,15 @@
                 <p>قسم يهتم بتحضير وصرف الأدوية.</p>
             </div>
             <div class="specialty-card">
-                <h3>المختبرات الطبية</ه3>
+                <h3>المختبرات الطبية</h3>
                 <p>قسم يهتم بالتحاليل الطبية والفحوصات المخبرية.</p>
             </div>
             <div class="specialty-card">
-                <ه3>الجراحة</ه3>
+                <h3>الجراحة</ه3>
                 <p>قسم يهتم بإجراء العمليات الجراحية.</p>
             </div>
             <div class="specialty-card">
-                <ه3>الطب الباطني</ه3>
+                <h3>الطب الباطني</ه3>
                 <p>قسم يعنى بتشخيص وعلاج الأمراض الباطنية.</p>
             </div>
             <div class="specialty-card">
