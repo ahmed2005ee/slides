@@ -1,97 +1,36 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>النصائح الطبية - السلايدات</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            overflow: hidden;
-            direction: rtl;
-        }
-        .slide-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .slide.active {
-            opacity: 1;
-        }
-        .navigation {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .nav-button {
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 16px;
-            color: white;
-            background-color: #4caf50;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .nav-button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-    <div class="slide-container">
-        <!-- السلايدات -->
-        <div class="slide active" style="background-color: #ff5722;">اشرب الماء بانتظام للحفاظ على الترطيب.</div>
-        <div class="slide" style="background-color: #4caf50;">مارس الرياضة يوميًا لمدة 30 دقيقة.</div>
-        <div class="slide" style="background-color: #2196f3;">تناول الخضروات والفواكه يوميًا.</div>
-        <div class="slide" style="background-color: #9c27b0;">تجنب التدخين لحماية رئتيك.</div>
-        <div class="slide" style="background-color: #ffc107;">احرص على غسل يديك جيدًا.</div>
-        <div class="slide" style="background-color: #607d8b;">احصل على نوم كافٍ يوميًا.</div>
-        <div class="slide" style="background-color: #e91e63;">قم بإجراء الفحوصات الطبية الدورية.</div>
-        <div class="slide" style="background-color: #3f51b5;">تناول وجبات متوازنة غنية بالبروتين.</div>
-        <div class="slide" style="background-color: #8bc34a;">حافظ على وزن صحي.</div>
-        <div class="slide" style="background-color: #00bcd4;">تجنب التوتر من خلال الاسترخاء.</div>
-    </div>
-    <div class="navigation">
-        <button class="nav-button" onclick="prevSlide()">السابق</button>
-        <button class="nav-button" onclick="nextSlide()">التالي</button>
-    </div>
+<?php
+// الاتصال بقاعدة البيانات
+$conn = new mysqli("localhost", "root", "", "medical_requests");
 
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+// تحقق من الاتصال
+if ($conn->connect_error) {
+    die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
+}
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-        }
+// جلب البيانات
+$sql = "SELECT * FROM appointments ORDER BY created_at DESC";
+$result = $conn->query($sql);
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
+echo "<h2>الطلبات المحجوزة</h2>";
+echo "<table border='1' cellpadding='10' style='width: 100%; text-align: center;'>";
+echo "<tr><th>الاسم</th><th>رقم الهاتف</th><th>الخدمة</th><th>تاريخ الموعد</th><th>تاريخ الطلب</th></tr>";
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-    </script>
-</body>
-</html>
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['phone'] . "</td>";
+        echo "<td>" . $row['service'] . "</td>";
+        echo "<td>" . $row['appointment_date'] . "</td>";
+        echo "<td>" . $row['created_at'] . "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='5'>لا توجد طلبات حالياً.</td></tr>";
+}
+
+echo "</table>";
+
+// إغلاق الاتصال
+$conn->close();
+?>
