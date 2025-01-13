@@ -1,257 +1,250 @@
-```html
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>النصائح الطبية</title>
+    <meta name="description" content="صفحة ويب طبية توفر خدمات متكاملة للرعاية الصحية.">
+    <title>صفحة طبية</title>
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* الخطوط والألوان */
         body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
+            font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5));
-            animation: backgroundAnimation 10s infinite alternate;
-        }
-
-        @keyframes backgroundAnimation {
-            0% {background: rgb(255, 0, 0);}
-            25% {background: rgb(0, 255, 0);}
-            50% {background: rgb(0, 0, 255);}
-            75% {background: rgb(255, 255, 0);}
-            100% {background: rgb(255, 0, 255);}
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
         }
 
         header {
-            background: url('https://via.placeholder.com/1200x300') no-repeat center center/cover;
-            color: white;
-            padding: 50px;
+            background-color: #0073e6;
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        header nav ul li a:hover {
+            background-color: #005bb5;
+            border-radius: 5px;
+        }
+
+        .hero {
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-            border-bottom: 5px solid rgb(0, 255, 255);
+            position: relative;
         }
 
-        main {
-            padding: 40px;
-            max-width: 1400px;
-            margin: auto;
-            background: white;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 115, 230, 0.7);
+            z-index: 1;
         }
 
-        main:hover {
-            transform: scale(1.02);
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #0073e6;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         h2 {
-            color: rgb(0, 255, 0);
-            margin-bottom: 10px;
-            font-size: 2.5rem;
-        }
-
-        p {
-            font-size: 18px;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .button {
-            display: inline-block;
-            margin: 20px 0;
-            padding: 15px 30px;
-            font-size: 18px;
-            color: white;
-            text-decoration: none;
-            background-color: rgb(0, 255, 255);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .button:hover {
-            background-color: rgb(255, 0, 255);
-            transform: scale(1.05);
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .product-card {
-            background: rgb(255, 255, 255);
-            border: 1px solid rgb(240, 240, 240);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 2rem;
+            color: #0073e6;
         }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 1.5rem;
         }
 
-        .product-info {
-            padding: 15px;
-            background: rgb(245, 245, 245);
-            border-top: 1px solid rgb(240, 240, 240);
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin: 1rem 0;
         }
 
         footer {
-            background-color: rgb(0, 255, 0);
-            color: white;
+            background-color: #333;
+            color: #fff;
             text-align: center;
-            padding: 20px;
-            font-size: 16px;
-            margin-top: 20px;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            margin-top: 2rem;
         }
 
-        .specialty-card h3 {
-            font-size: 1.8rem;
-            color: rgb(255, 0, 255);
-            text-transform: uppercase;
-            transition: color 0.3s;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .specialty-card:hover h3 {
-            color: rgb(255, 255, 0);
+        form input, form select, form button {
+            padding: 0.7rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
-        .specialty-card {
-            flex: 1 1 calc(33.333% - 20px);
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgb(240, 240, 240);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-            padding: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeIn 1s ease-in-out;
+        form button {
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .specialty-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        form button:hover {
+            background-color: #005bb5;
         }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
     </style>
 </head>
 <body>
+    <!-- الشريط العلوي -->
     <header>
-        النصائح الطبية اليومية
+        <div class="container">
+            <h1>الرعاية الصحية بين يديك</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#team">فريقنا</a></li>
+                    <li><a href="#appointment">حجز موعد</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <h2>مرحبًا بك!</h2>
-        <p>استكشف المزيد من النصائح الطبية المفيدة من خلال الضغط على الزر أدناه.</p>
-        <a href="slides.html" class="button">اذهب إلى النصائح</a>
-        <h2>محتويات طبية مفيدة</h2>
-        <p>هنا يمكنك العثور على مقالات ونصائح متعلقة بالصحة والطب، مثل التغذية السليمة، وممارسة الرياضة، والعناية بالصحة النفسية، وغيرها الكثير.</p>
-        <h2>تحميل الملف DOCX</h2>
-        <p>يمكنك تحميل الملف DOCX بالنقر على الزر أدناه.</p>
-        <a href="https://github.com/ahmed2005ee/slides/blob/main/%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A9%20%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D8%AF%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A7%D8%B5%D9%84%D9%8A%D8%A9.docx" class="button">تحميل الملف</a>
-        <h2>تحميل كتاب الدام الشامل</h2>
-        <p>يمكنك تحميل الكتاب بالنقر على الزر أدناه.</p>
-        <a href="https://drive.google.com/file/d/12kA3lTOVBYyGvwRISxvoO5u3UeScYDT8/view?usp=drivesdk" class="button">تحميل الكتاب</a>
-        <h2>منتجات مميزة</h2>
-        <div class="products">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200" alt="منتج 1" class="product-image">
-                <div class="product-info">
-                    <h3>جهاز قياس الضغط</h3>
-                    <p>احصل على قياسات دقيقة لضغط الدم بسهولة.</p>
-                    <p class="price">50 دولار</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200" alt="منتج 2" class="product-image">
-                <div class="product-info">
-                    <h3>ميزان حرارة رقمي</h3>
-                    <p>قياس سريع ودقيق لدرجة حرارة الجسم.</p>
-                    <p class="price">20 دولار</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200" alt="منتج 3" class="product-image">
-                <div class="product-info">
-                    <h3>مجموعة إسعافات أولية</h3>
-                    <p>مجموعة متكاملة تحتوي على أهم أدوات الإسعاف.</p>
-                    <p class="price">30 دولار</p>
-                </div>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home" class="hero">
+        <div class="overlay">
+            <div class="hero-content">
+                <h2>رعايتكم هدفنا</h2>
+                <p>نوفر لك أفضل الخدمات الطبية بأحدث التقنيات.</p>
+                <a href="#appointment" class="btn">احجز موعد الآن</a>
             </div>
         </div>
-        <h2>أقسام الطب</h2>
-        <div class="specialties">
-            <div class="specialty-card">
-                <h3>الصيدلة</h3>
-                <p>قسم يهتم بتحضير وصرف الأدوية.</p>
+    </section>
+
+    <!-- الخدمات -->
+    <section id="services">
+        <h2>خدماتنا الطبية</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://via.placeholder.com/300" alt="استشارات طبية">
+                <h3>الاستشارات العامة</h3>
+                <p>نقدم استشارات طبية متخصصة لتلبية احتياجاتك الصحية.</p>
             </div>
-            <div class="specialty-card">
-                <h3>المختبرات الطبية</h3>
-                <p>قسم يهتم بالتحاليل الطبية والفحوصات المخبرية.</p>
-            </div>
-            <div class="specialty-card">
-                <h3>الجراحة</h3>
-                <p>قسم يهتم بإجراء العمليات الجراحية.</p>
-            </div>
-            <div class="specialty-card">
-                <h3>الطب الباطني</h3>
-                <p>قسم يعنى بتشخيص وعلاج الأمراض الباطنية.</p>
-            </div>
-            <div class="specialty-card">
-                <h3>طب الأطفال</h3>
-                <p>قسم يهتم بصحة وعلاج الأطفال.</p>
-            </div>
-            <div class="specialty-card">
-                <h3>طب النساء والتوليد</h3>
-                <p>قسم يهتم بصحة النساء والحمل والولادة.</p>
-            </div>
-            <div class="specialty-card">
+            <div class="card">
+                <img src="https://via.placeholder.com/300" alt="الطب النفسي">
                 <h3>الطب النفسي</h3>
-                <p>قسم يهتم بالصحة النفسية والعقلية.</p>
+                <p>رعاية نفسية متكاملة لتحسين صحتك العقلية.</p>
             </div>
-            <div class="specialty-card">
-                <h3>طب الأسنان</h3>
-                <p>قسم يعنى بصحة الفم والأسنان.</p>
-            </div>
-            <div class="specialty-card">
-                <h3>الطب الرياضي</h3>
-                <p>قسم يهتم بصحة وعلاج الرياضيين.</p>
-            </div>
-            <div class="specialty-card">
-                <h3>طب الطوارئ</h3>
-                <p>قسم يهتم بالحالات الطارئة والعاجلة.</p>
+            <div class="card">
+                <img src="https://via.placeholder.com/300" alt="تحاليل مخبرية">
+                <h3>التحاليل المخبرية</h3>
+                <p>إجراء التحاليل الطبية بدقة واحترافية.</p>
             </div>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2025 النصائح الطبية اليومية | جميع الحقوق محفوظة</p>
+    </section>
+
+    <!-- حجز المواعيد -->
+    <section id="appointment">
+        <h2>حجز موعد</h2>
+        <form>
+            <input type="text" placeholder="الاسم" required>
+            <input type="tel" placeholder="رقم الهاتف" required>
+            <select required>
+                <option value="">اختر الخدمة المطلوبة</option>
+                <option value="consultation">استشارة</option>
+                <option value="psychiatry">طب نفسي</option>
+                <option value="lab">تحاليل مخبرية</option>
+            </select>
+            <input type="date" required>
+            <button type="submit">احجز الآن</button>
+        </form>
+    </section>
+
+    <!-- اتصل بنا -->
+    <footer id="contact">
+        <p>الهاتف: 0123456789</p>
+        <p>البريد الإلكتروني: info@medicalpage.com</p>
+        <p>العنوان: شارع الصحة، المدينة</p>
     </footer>
 </body>
 </html>
-```
